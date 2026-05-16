@@ -25,3 +25,19 @@ recipes = {
     }
 }
 
+def recipe_list(request):
+    ctx = {
+        "recipes": [
+            {"name": "Recipe 1", "link": "/recipe/1"}
+            {"name": "Recipe 2", "link": "/recipe/2"}
+        ]
+    }
+    return render(request, 'recipe_list.html', ctx)
+
+def recipe_1(request):
+    ctx = {"recipe": recipes["recipe1"]}
+    return render(request, 'recipe_1', ctx)
+
+def recipe_2(request):
+    ctx = {"recipe": recipes["recipe2"]}
+    return render(request, 'recipe_2.html', ctx)
