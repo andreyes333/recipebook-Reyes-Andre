@@ -36,7 +36,7 @@ def recipe_list(request):
 
 def recipe_1(request):
     ctx = {"recipe": recipes["recipe1"]}
-    return render(request, 'recipe_1', ctx)
+    return render(request, 'recipe_1.html', ctx)
 
 def recipe_2(request):
     ctx = {"recipe": recipes["recipe2"]}
