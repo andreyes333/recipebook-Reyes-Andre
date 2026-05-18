@@ -32,6 +32,8 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
         related_name="authors",
     )
     created_on = models.DateTimeField(auto_now_add=True),

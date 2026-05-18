@@ -1,3 +1,4 @@
+<html>
 <header>
     Recipe Book
 </header>
@@ -6,8 +7,8 @@
         {% if user.is_authenticated %}
             <div>User: {{ user.username }}</div>
             <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
+                {% csrf_token %}
+                {{ form.as_p }}
             <button type="submit">Logout</button>
             </form>
         {% else %}
@@ -20,5 +21,6 @@
     </h2>
     <hr>
 </body>
+</html>
 {% block content %}
 {% endblock %}
