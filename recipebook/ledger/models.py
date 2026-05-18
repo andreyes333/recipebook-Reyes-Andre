@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -32,3 +32,8 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return self.quantity
+
+class Profile(models.Model):
+    user = models.OneToOneField(User)
+    name = models.CharField(max_length=50)
+    bio = models.CharField(max_length=255)
