@@ -7,11 +7,10 @@
     </title>
 </head>
 <ul>
-    <li>
-        <a href="/recipe/1">Recipe 1</a>
-    </li>
-    <li>
-        <a href="/recipe/2">Recipe 2</a>
-    </li>
+    {% for recipe in recipe_list %}
+            <li>
+                <nav><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></nav>
+            </li>
+    {% endfor %}
 </ul>
 {% endblock %}
