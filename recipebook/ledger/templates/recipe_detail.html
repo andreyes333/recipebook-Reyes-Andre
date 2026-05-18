@@ -4,8 +4,8 @@
 <body>
     <h1>{{ recipe.name }}</h1>
     <ul>
-        {% for item in recipe.ingredients.all %}
-            <li>{{ item.name }}: {{ item.quantity }}</li>
+        {% for ingredient in recipe.ingredients.all %}
+            <li>{{ ingredient.ingredient.name }}: {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
 </body>

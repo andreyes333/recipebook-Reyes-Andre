@@ -9,7 +9,9 @@
 <ul>
     {% for recipe in recipe_list %}
             <li>
-                <nav><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></nav>
+                <nav>
+                    <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
+                </nav>
             </li>
     {% endfor %}
 </ul>
