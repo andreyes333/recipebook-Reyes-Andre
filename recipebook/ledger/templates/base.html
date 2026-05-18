@@ -1,5 +1,24 @@
 <header>
     Recipe Book
 </header>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <div>User: {{ user.username }}</div>
+            <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
+    <hr>
+    <h2>
+        Recipes
+    </h2>
+    <hr>
+</body>
 {% block content %}
 {% endblock %}
