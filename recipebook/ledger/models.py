@@ -10,8 +10,7 @@ class Profile(models.Model):
     bio = models.TextField(
         validators=[
             MinLengthValidator(
-                256,
-                'Field must contain more than 255 characters'
+                256, "Field must contain more than 255 characters"
             )
         ]
     )
@@ -54,9 +53,7 @@ class RecipeIngredient(models.Model):
         related_name="recipe",
     )
     recipe = models.ForeignKey(
-        Recipe, 
-        on_delete=models.CASCADE, 
-        related_name="ingredients"
+        Recipe, on_delete=models.CASCADE, related_name="ingredients"
     )
 
     def __str__(self):

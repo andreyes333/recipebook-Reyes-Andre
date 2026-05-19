@@ -41,7 +41,8 @@ class Migration(migrations.Migration):
                     models.TextField(
                         validators=[
                             django.core.validators.MinLengthValidator(
-                                256, "Field must contain more than 255 characters"
+                                256,
+                                "Field must contain more than 255 characters"
                             )
                         ]
                     ),
