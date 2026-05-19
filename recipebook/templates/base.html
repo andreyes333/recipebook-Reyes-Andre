@@ -1,6 +1,10 @@
-<h1>
+{% load static %}
+<html lang="en-US">
+<header>
     Recipe Book
-</h1>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    {% block styles %}{% endblock %}
+</header>
 <body>
     <nav>
         {% if user.is_authenticated %}
@@ -19,6 +23,9 @@
         Recipes
     </h2>
     <hr>
+    {% block main %}{% endblock %}
+    {% block scripts %}{% endblock %}
 </body>
+</html>
 {% block content %}
 {% endblock %}
