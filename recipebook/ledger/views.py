@@ -7,7 +7,6 @@ from .models import Recipe, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
 
 
-
 class RecipeListView(ListView):
     model = Recipe
     template_name = "recipe_list.html"
@@ -27,7 +26,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user.profile
         return super().form_valid(form)
-    
+
 
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
@@ -35,14 +34,15 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     template_name = "recipe_add_image.html"
 
     def get_success_url(self):
-        return reverse_lazy('ledger:recipe-detail',
-                            kwargs={'pk': self.object.recipe.pk})
+        return reverse_lazy(
+            "ledger:recipe-detail", kwargs={"pk": self.object.recipe.pk}
+        )
 
     def form_valid(self, form):
-        form.instance.recipe = Recipe.objects.get(pk=self.kwargs['pk'])
+        form.instance.recipe = Recipe.objects.get(pk=self.kwargs["pk"])
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["recipe"] = Recipe.objects.get(pk=self.kwargs['pk'])
+        context["recipe"] = Recipe.objects.get(pk=self.kwargs["pk"])
         return context

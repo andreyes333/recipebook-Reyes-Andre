@@ -10,7 +10,7 @@ class ProfileInline(admin.StackedInline):
 
 
 class UserAdmin(BaseUserAdmin):
-    search_fields = ('name', )
+    search_fields = ("name",)
     inlines = [
         ProfileInline,
     ]
