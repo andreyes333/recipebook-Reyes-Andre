@@ -4,7 +4,7 @@
     <style>
         img {
             width: auto;
-            max-height: 25em;
+            max-height: 20em;
         }
     </style>
 {% endblock %}
@@ -29,7 +29,7 @@
 
     <hr>
 
-    {% if user.is_authenticated and user.username == recipe.author.name %}
+    {% if user.is_authenticated %}
         <div>
             <a href="{% url 'ledger:recipe-add-image' pk=recipe.pk %}">
                 Add an Image to Recipe

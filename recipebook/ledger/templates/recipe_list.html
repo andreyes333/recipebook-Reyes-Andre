@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
 <body>
 <head>
     <title>
@@ -16,5 +16,6 @@
             </li>
     {% endfor %}
 </ul>
+<a href="{% url 'ledger:recipe-add' %}">Create New Recipe</a>
 </body>
 {% endblock %}

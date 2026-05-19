@@ -5,7 +5,11 @@ from django.core.validators import MinLengthValidator
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="profile"
+    )
     name = models.CharField(max_length=50)
     bio = models.TextField(
         validators=[
