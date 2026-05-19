@@ -1,13 +1,40 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<body>
+{% block styles %}
+    <style>
+        img {
+            width: auto;
+            max-height: 25em;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
     <h1>{{ recipe.name }}</h1>
     <h3>created by: {{ recipe.author.name }}</h3>
+
+    {% for recipe_image in recipe.images.all %}
+        <div>
+            <img src="{{ recipe_image.image.url }}" 
+            alt="{{ recipe_image.description }}">
+        </div>
+    {% endfor %}
+
+    <h2>Ingredients</h2>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.ingredient.name }}: {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
-</body>
+
+    <hr>
+
+    {% if user.is_authenticated and user.username == recipe.author.name %}
+        <div>
+            <a href="{% url 'ledger:recipe-add-image' pk=recipe.pk %}">
+                Add an Image to Recipe
+            </a>
+        </div>
+    {% endif %}
+    <div><a href="{% url 'ledger:recipe-list' %}">Back to Recipes</a></div>
 {% endblock %}
